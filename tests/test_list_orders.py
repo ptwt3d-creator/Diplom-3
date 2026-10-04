@@ -1,15 +1,23 @@
 import pytest
+import allure
 from selenium import webdriver
 from pages.list_order_page import OrderPage
 from pages.main_page import MainPage
 from pages.login_page import LoginPage
 
+
+@allure.suite("UI Лента заказов")
+@allure.sub_suite("Проверка счетчиков и списков заказов")
 class TestListOrder:
 
+    @allure.title("Увеличение счетчика ингредиента при добавлении в конструктор")
+    @allure.description("Проверка, что при перетаскивании ингредиента в зону сборки его счетчик становится равен 1")
     def test_counter_ingredient(self, main_page_function_scope):
         main_page_function_scope.drag_and_drop_ingedient_to_choose_area()
         main_page_function_scope.check_counter_ingredient_1()
-        
+    
+    @allure.title("Увеличение счетчика 'Выполнено за все время' при создании заказа")
+    @allure.description("Проверка, что после оформления заказа под авторизованным пользователем общий счетчик увеличивается на 1")
     def test_counter_all_time_increased(self, driver_function_scope, login_page_function_scope):
         main_page = MainPage(driver_function_scope)
         list_order = OrderPage(driver_function_scope)
@@ -33,6 +41,8 @@ class TestListOrder:
 
         assert int(counter_all_time_value_increased) == int(counter_all_time_value) + 1
 
+    @allure.title("Увеличение счетчика 'Выполнено за сегодня' при создании заказа")
+    @allure.description("Проверка, что после оформления заказа под авторизованным пользователем ежедневный счетчик увеличивается на 1")
     def test_counter_to_day_increased(self, driver_function_scope, login_page_function_scope):
         main_page = MainPage(driver_function_scope)
         list_order = OrderPage(driver_function_scope)
@@ -56,6 +66,8 @@ class TestListOrder:
 
         assert int(counter_to_day_value_increased) == int(counter_to_day_value) + 1
     
+    @allure.title("Отображение номера созданного заказа в блоке 'В работе'")
+    @allure.description("Проверка, что номер только что созданного заказа появляется в списке активных заказов в Ленте")
     def test_check_created_number_order_in_work_list(self, driver_function_scope, login_page_function_scope):
         main_page = MainPage(driver_function_scope)
         list_order = OrderPage(driver_function_scope)

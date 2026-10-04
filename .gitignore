@@ -1,3 +1,5 @@
 .pytest_cache
 __pycache__
 allure_results
+results_chrome
+results_firefox
