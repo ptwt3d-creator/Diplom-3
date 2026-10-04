@@ -13,14 +13,9 @@ def driver():
     yield browser
     browser.quit()
 
-@pytest.fixture()
-def main_page_class_scope(driver):
-    driver.get(Urls.MAIN_PAGE_STELLAR)
-    return MainPage(driver)
-
 @pytest.fixture(scope="function")
 def driver_function_scope():
-    browser = webdriver.Firefox()
+    browser = webdriver.Chrome()
     yield browser
     browser.quit()
 
