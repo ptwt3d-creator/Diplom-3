@@ -43,6 +43,12 @@ class BasePage:
     def wait_text_in_element(self, locator, expected_text, time=10):
         return WebDriverWait(self.driver, time).until(EC.text_to_be_present_in_element(locator, expected_text))
 
+    def wait_text_not_in_element(self, locator, expected_text, time=10):
+        return WebDriverWait(self.driver, time).until_not(EC.text_to_be_present_in_element(locator, expected_text))
+    
+    def wait_text_not_in_element_list_variants(self, locator, expected_variants, time=10):
+        return WebDriverWait(self.driver, time).until(lambda _: self.find_element(locator).text not in expected_variants) # Лямбда смотрит в условие - когда условие не выполнилось, через короткое время (~0.5 секуды) WebDriverWait снова вызывает лямбду которая снова проверяет условие
+
     def get_text_from_element(self, locator, time=10):
         element = WebDriverWait(self.driver, time).until(EC.visibility_of_element_located(locator))
         return element.text

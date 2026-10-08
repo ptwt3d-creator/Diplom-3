@@ -19,6 +19,4 @@ class OrderPage(CommonPage):
         return self.get_text_from_element(Locators.LIST_ORDER_IN_WORK)
 
     def wait_number_order_in_work_list(self, number):
-        WebDriverWait(self.driver, 10).until(
-            lambda driver: number in driver.find_element(*Locators.LIST_ORDER_IN_WORK).text
-        )
+        self.wait_text_in_element(Locators.LIST_ORDER_IN_WORK, str(number))

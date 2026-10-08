@@ -12,9 +12,6 @@ class MainPage(CommonPage):
     def __init__(self, driver):
         self.driver = driver
 
-    def find_element(self, locator):
-        return self.driver.find_element(*locator)
-
     def wait_click_ingredient(self):
         element = self.wait_for_element_clickable(Locators.INGRIDIENT)
         element.click()
@@ -53,14 +50,14 @@ class MainPage(CommonPage):
         self.js_wait_click(Locators.BUTTON_CLOSE_WINDOW_ORDER_CREATED)
     
     def wait_click_close_window_order_created(self):
-        WebDriverWait(self.driver, 10).until(lambda driver: driver.find_element(*Locators.NUMBER_ORDER_IN_ORDER_CREATED).text not in ["9999", "999", ""])
+        self.wait_text_not_in_element_list_variants(Locators.NUMBER_ORDER_IN_ORDER_CREATED, ["9999", "999", ""])
         self.js_wait_click(Locators.BUTTON_CLOSE_WINDOW_ORDER_CREATED)
     
     def get_number_oreder_in_window_created_order(self):
         return self.find_element(Locators.NUMBER_ORDER_IN_ORDER_CREATED).text
     
     def wait_ready_window_order_created(self):
-        WebDriverWait(self.driver, 10).until(lambda driver: driver.find_element(*Locators.NUMBER_ORDER_IN_ORDER_CREATED).text not in ["9999", "999", ""])
+        self.wait_text_not_in_element_list_variants(Locators.NUMBER_ORDER_IN_ORDER_CREATED, ["9999", "999", ""])
 
     def js_click_close_button_oreder_created(self):
         self.js_wait_click(Locators.BUTTON_CLOSE_WINDOW_ORDER_CREATED)
