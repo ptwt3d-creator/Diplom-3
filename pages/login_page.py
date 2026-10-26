@@ -1,4 +1,3 @@
-from selenium.webdriver.common.by import By
 from pages.base_page import CommonPage
 from locators.login_page_locators import Locators
 

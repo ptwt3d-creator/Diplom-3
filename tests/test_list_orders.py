@@ -2,7 +2,6 @@ import pytest
 import allure
 from pages.list_order_page import OrderPage
 from pages.main_page import MainPage
-from pages.login_page import LoginPage
 
 
 @allure.suite("UI Лента заказов")
