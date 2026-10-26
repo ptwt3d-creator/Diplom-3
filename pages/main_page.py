@@ -68,3 +68,6 @@ class MainPage(CommonPage):
     def js_click_close_button_oreder_created(self):
         self.js_wait_click(Locators.BUTTON_CLOSE_WINDOW_ORDER_CREATED)
     
+    def get_ingredient_counter_value(self):
+        value = self.find_element(Locators.COUNTER_INGRIDIENT).text
+        return str(value)
