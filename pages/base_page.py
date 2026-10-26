@@ -64,10 +64,6 @@ class BasePage:
 
 class CommonPage(BasePage):
 
-    def wait_click_constructor(self):
-        element = self.wait_for_element_clickable(Locators.CONSTRUCTOR)
-        elemetn.click()
-
     def wait_click_list_orders_button(self):
         element = self.wait_for_element_clickable(Locators.LIST_ORDER_BUTTON)
         element.click()
