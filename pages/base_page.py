@@ -16,6 +16,9 @@ class BasePage:
     def find_element(self, locator):
         return self.driver.find_element(*locator)
     
+    def get_current_url(self):
+        return self.driver.current_url
+    
     def wait_for_element_visible(self, locator, time=10):
         return WebDriverWait(self.driver, time).until(EC.visibility_of_element_located(locator))
 
