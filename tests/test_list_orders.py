@@ -32,8 +32,8 @@ class TestListOrder:
         counter_all_time_value = list_order_page.get_value_counter_all_time()
 
         list_order_page.wait_click_constructor_button()
+        
         main_page.wait_header_collect_burger()
-
         main_page.drag_and_drop_bun_to_choose_area()
         main_page.wait_click_create_order_button()
         main_page.wait_click_close_window_order_created()
@@ -62,8 +62,8 @@ class TestListOrder:
         counter_to_day_value = list_order_page.get_value_counter_to_day()
 
         list_order_page.wait_click_constructor_button()
+        
         main_page.wait_header_collect_burger()
-
         main_page.drag_and_drop_bun_to_choose_area()
         main_page.wait_click_create_order_button()
         main_page.wait_click_close_window_order_created()
@@ -95,11 +95,11 @@ class TestListOrder:
         
         main_page.js_click_close_button_oreder_created()
         main_page.js_wait_click_list_order_button()
-        list_order_page.wait_header_list_order
+        list_order_page.wait_header_list_order()
 
         # Ожидаем появления номера заказа на странице списка заказов
         list_order_page.wait_number_order_in_work_list(num_order_window)
-        
+
         # Сохраняем в переменную для последующего сравнения с номером заказа полученым при создании заказа
         num_order_work_list = list_order_page.get_number_oreder_in_list_work()
 
