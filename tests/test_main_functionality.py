@@ -12,6 +12,8 @@ class TestMainFunc:
     def test_open_details(self, main_page_function_scope):
         main_page_function_scope.wait_click_ingredient()
         main_page_function_scope.wait_window_details()
+
+        assert main_page_function_scope.is_window_details_displayed()
     
     @allure.title("Закрытие модального окна деталей ингредиента")
     @allure.description("Проверка, что при нажатии на крестик окно деталей успешно закрывается и исчезает с экрана")
@@ -20,6 +22,9 @@ class TestMainFunc:
         main_page_function_scope.wait_window_details()
         main_page_function_scope.wait_click_close_details_button()
         main_page_function_scope.wait_close_details()
+
+        assert main_page_function_scope.is_window_details_invisibility()
+
     
 
     
