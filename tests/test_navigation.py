@@ -1,7 +1,8 @@
 import pytest
 import allure
-from selenium import webdriver
-from pages.base_page import CommonPage
+from pages.list_order_page import OrderPage
+from pages.main_page import MainPage
+from data import Urls
 
 
 @allure.suite("UI Навигация")
@@ -11,12 +12,24 @@ class TestNavigation:
     @allure.title("Переход из конструктора на страницу 'Лента заказов'")
     @allure.description("Проверка корректного редиректа и открытия Ленты заказов при клике на соответствующую кнопку шапки")
     def test_list_order_button_navigation(self, main_page_function_scope):
-        main_page_function_scope.wait_click_list_orders_button()
-        main_page_function_scope.wait_header_list_order()
+    
+        main_page_function_scope.wait_click_list_orders_button() # клик по кнопке список заказов - переход на страницу списка заказов с главной страницы бургерной
+
+        # Проверка что страницы прогрузилась (ждем не url а заголовок страницы чтобы убедится что страница тоже загрузилась)
+        list_order_page = OrderPage(main_page_function_scope.driver) # Создаем объект list_order_page на основе запущенного драйвера(уже открытой страницы браузера) для использоваиня методов страницы списка заказов (https://qa-stellarburgers.education-services.ru/feed) и не создания еще одного драйвера(еще одно открытие страницы браузера нам не нужно уже был открыт ранее фикстурой main_page_function_scope в открытом браузере и нужно работать)
+        list_order_page.wait_header_list_order() # через созданный объект страницы списка заказов, использем методы этой страницы, всё в одном драйвере, который создался при инициализации теста через main_page_function_scope
+
+        assert list_order_page.get_current_url() == Urls.LIST_ORDERS_STELLAR
+
     
     @allure.title("Переход из Ленты обратно в 'Конструктор'")
     @allure.description("Проверка успешного возврата на главную страницу сборки бургеров из другого раздела")
-    def test_constructor_button_navigation(self, main_page_function_scope):
-        main_page_function_scope.wait_click_list_orders_button()
-        main_page_function_scope.wait_header_list_order()
+    def test_constructor_button_navigation(self, list_order_page_function_scope):
+
+        list_order_page_function_scope.wait_click_constructor_button()
+
+        main_page = MainPage(list_order_page_function_scope.driver)
+        main_page.wait_header_collect_burger()
+        
+        assert main_page.get_current_url() == Urls.MAIN_PAGE_STELLAR
 
