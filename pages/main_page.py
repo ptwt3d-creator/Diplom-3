@@ -35,7 +35,7 @@ class MainPage(CommonPage):
     def drag_and_drop_ingedient_to_choose_area(self):
         self.drag_and_drop_element(Locators.INGRIDIENT, Locators.BASKET_INGREDIENTS)
 
-    def check_counter_ingredient_1(self):
+    def wait_counter_ingredient_1(self):
         self.wait_text_in_element(Locators.COUNTER_INGRIDIENT, "1")
     
     def drag_and_drop_bun_to_choose_area(self):

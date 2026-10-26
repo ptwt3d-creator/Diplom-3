@@ -14,8 +14,8 @@ class TestListOrder:
     @allure.description("Проверка, что при перетаскивании ингредиента в зону сборки его счетчик становится равен 1")
     def test_counter_ingredient(self, main_page_function_scope):
         main_page_function_scope.drag_and_drop_ingedient_to_choose_area()
-        main_page_function_scope.check_counter_ingredient_1()
-    
+        main_page_function_scope.wait_counter_ingredient_1()
+
     @allure.title("Увеличение счетчика 'Выполнено за все время' при создании заказа")
     @allure.description("Проверка, что после оформления заказа под авторизованным пользователем общий счетчик увеличивается на 1")
     def test_counter_all_time_increased(self, driver_function_scope, login_page_function_scope):
