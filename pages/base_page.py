@@ -26,7 +26,7 @@ class BasePage:
         return WebDriverWait(self.driver, time).until(EC.element_to_be_clickable(locator))
 
     def wait_for_element_invisibility(self, locator, time=10):
-        return WebDriverWait(self.driver, time).until(EC.invisibility_of_element(locator))
+        return WebDriverWait(self.driver, time).until(EC.invisibility_of_element_located(locator))
 
     def drag_and_drop_element(self, locator1, locator2):
 
