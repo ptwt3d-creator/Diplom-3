@@ -23,6 +23,14 @@ class TestMainFunc:
         main_page_function_scope.wait_close_details()
 
         assert main_page_function_scope.is_window_details_invisibility()
+    
+    @allure.title("Увеличение счетчика ингредиента при добавлении в конструктор")
+    @allure.description("Проверка, что при перетаскивании ингредиента в зону сборки его счетчик становится равен 1")
+    def test_counter_ingredient(self, main_page_function_scope):
+        main_page_function_scope.drag_and_drop_ingedient_to_choose_area()
+        main_page_function_scope.wait_counter_ingredient_1()
+
+        assert main_page_function_scope.get_ingredient_counter_value() == "1"
 
     
 
