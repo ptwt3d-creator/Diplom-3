@@ -18,7 +18,13 @@ class MainPage(CommonPage):
     
     def wait_window_details(self):
         self.wait_for_element_visible(Locators.HEADER_INGREDIENT_DETALS)
+    
+    def is_window_details_displayed(self):
+        return self.find_element(Locators.HEADER_INGREDIENT_DETALS).is_displayed() # is_displayed() проверяет виден ли элемент на экране, поверяет по DOM-дереву так что оверлеи ему не мешают
 
+    def is_window_details_invisibility(self):
+        return self.wait_for_element_invisibility(Locators.HEADER_INGREDIENT_DETALS)
+    
     def wait_click_close_details_button(self):
         element = self.wait_for_element_clickable(Locators.BUTTON_CLOSE_DETAILS)
         element.click()
