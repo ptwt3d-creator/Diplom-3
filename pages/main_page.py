@@ -17,7 +17,7 @@ class MainPage(CommonPage):
     def wait_window_details(self):
         self.wait_for_element_visible(MainLocators.HEADER_INGREDIENT_DETALS)
     
-    @allure.step("Проверка, отображается ли окно с деталями")
+    @allure.step("Запрос статуса видимости окна деталей")
     def is_window_details_displayed(self):
         return self.find_element(MainLocators.HEADER_INGREDIENT_DETALS).is_displayed() # is_displayed() проверяет виден ли элемент на экране, поверяет по DOM-дереву так что оверлеи ему не мешают
 
