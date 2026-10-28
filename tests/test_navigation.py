@@ -19,7 +19,8 @@ class TestNavigation:
         list_order_page = OrderPage(main_page_function_scope.driver) # Создаем объект list_order_page на основе запущенного драйвера(уже открытой страницы браузера) для использоваиня методов страницы списка заказов (https://qa-stellarburgers.education-services.ru/feed) и не создания еще одного драйвера(еще одно открытие страницы браузера нам не нужно уже был открыт ранее фикстурой main_page_function_scope в открытом браузере и нужно работать)
         list_order_page.wait_header_list_order() # через созданный объект страницы списка заказов, использем методы этой страницы, всё в одном драйвере, который создался при инициализации теста через main_page_function_scope
 
-        assert list_order_page.get_current_url() == Urls.LIST_ORDERS_STELLAR
+        with allure.step(f"Проверка, что текущий URL соответствует странице Ленты заказов: {Urls.LIST_ORDERS_STELLAR}"):
+            assert list_order_page.get_current_url() == Urls.LIST_ORDERS_STELLAR
 
     
     @allure.title("Переход из Ленты в 'Конструктор'")
@@ -31,5 +32,6 @@ class TestNavigation:
         main_page = MainPage(list_order_page_function_scope.driver)
         main_page.wait_header_collect_burger()
         
-        assert main_page.get_current_url() == Urls.MAIN_PAGE_STELLAR
+        with allure.step(f"Проверка, что текущий URL соответствует главной странице Конструктора: {Urls.MAIN_PAGE_STELLAR}"):
+            assert main_page.get_current_url() == Urls.MAIN_PAGE_STELLAR
 
