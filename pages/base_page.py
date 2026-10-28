@@ -4,6 +4,7 @@ from selenium.webdriver.support.wait import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 from data import Urls
 from locators.base_page_locators import BaseLocators
+import allure
 
 
 class BasePage:
@@ -62,17 +63,21 @@ class BasePage:
 
 class CommonPage(BasePage):
 
+    @allure.step("Клик по кнопке 'Лента заказов'")
     def wait_click_list_orders_button(self):
         element = self.wait_for_element_clickable(BaseLocators.LIST_ORDER_BUTTON)
         element.click()
     
+    @allure.step("Клик по кнопке 'Конструктор'")
     def wait_click_constructor_button(self):
         element = self.wait_for_element_clickable(BaseLocators.CONSTRUCTOR)
         element.click()
-        
+    
+    @allure.step("Ожидание исчезновения модального оверлея")
     def wait_invisibility_modal_overlay(self):
         self.wait_for_element_invisibility(BaseLocators.MODAL_OVERLAY)
-
+    
     # Из-за оверлея работает тольо js
+    @allure.step("JS-клик по кнопке 'Лента заказов'")
     def js_wait_click_list_order_button(self):
         self.js_wait_click(BaseLocators.LIST_ORDER_BUTTON)

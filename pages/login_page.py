@@ -1,8 +1,11 @@
 from pages.base_page import CommonPage
 from locators.login_page_locators import LoginLocators
+import allure
+
 
 class LoginPage(CommonPage):
     
+    @allure.step("Клик по кнопке войти на странице логина")
     def wait_click_login_button(self):
         element = self.wait_for_element_clickable(LoginLocators.LOGIN_BUTTON)
         element.click()
