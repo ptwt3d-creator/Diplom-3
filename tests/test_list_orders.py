@@ -10,12 +10,12 @@ class TestListOrder:
 
     @allure.title("Увеличение счетчика 'Выполнено за все время' при создании заказа")
     @allure.description("Проверка, что после оформления заказа под авторизованным пользователем общий счетчик увеличивается на 1")
-    def test_counter_all_time_increased(self, login_page_function_scope):
-        main_page = MainPage(login_page_function_scope.driver) # login_page_function_scope и подобные - объекты классов и имеют конструктор driver наследуемый от Basepage, driver задается в фикстурах
-        list_order_page = OrderPage(login_page_function_scope.driver)
+    def test_counter_all_time_increased(self, login_page):
+        main_page = MainPage(login_page.driver) # login_page и подобные - объекты классов и имеют конструктор driver наследуемый от Basepage, driver задается в фикстурах
+        list_order_page = OrderPage(login_page.driver)
 
-        login_page_function_scope.login_on_site()
-        login_page_function_scope.wait_invisibility_modal_overlay()
+        login_page.login_on_site()
+        login_page.wait_invisibility_modal_overlay()
 
         main_page.wait_header_collect_burger()
         list_order_page.wait_click_list_orders_button()
@@ -41,12 +41,12 @@ class TestListOrder:
 
     @allure.title("Увеличение счетчика 'Выполнено за сегодня' при создании заказа")
     @allure.description("Проверка, что после оформления заказа под авторизованным пользователем ежедневный счетчик увеличивается на 1")
-    def test_counter_to_day_increased(self, login_page_function_scope):
-        main_page = MainPage(login_page_function_scope.driver)
-        list_order_page = OrderPage(login_page_function_scope.driver)
+    def test_counter_to_day_increased(self, login_page):
+        main_page = MainPage(login_page.driver)
+        list_order_page = OrderPage(login_page.driver)
 
-        login_page_function_scope.login_on_site()
-        login_page_function_scope.wait_invisibility_modal_overlay()
+        login_page.login_on_site()
+        login_page.wait_invisibility_modal_overlay()
 
         main_page.wait_header_collect_burger()
         list_order_page.wait_click_list_orders_button()
@@ -72,12 +72,12 @@ class TestListOrder:
     
     @allure.title("Отображение номера созданного заказа в блоке 'В работе'")
     @allure.description("Проверка, что номер только что созданного заказа появляется в списке активных заказов в Ленте")
-    def test_check_created_number_order_in_work_list(self, login_page_function_scope):
-        main_page = MainPage(login_page_function_scope.driver)
-        list_order_page = OrderPage(login_page_function_scope.driver)
+    def test_check_created_number_order_in_work_list(self, login_page):
+        main_page = MainPage(login_page.driver)
+        list_order_page = OrderPage(login_page.driver)
 
-        login_page_function_scope.login_on_site()
-        login_page_function_scope.wait_invisibility_modal_overlay()
+        login_page.login_on_site()
+        login_page.wait_invisibility_modal_overlay()
 
         main_page.wait_header_collect_burger()
         main_page.drag_and_drop_bun_to_choose_area()

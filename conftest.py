@@ -16,19 +16,19 @@ def driver():
         browser.quit()
 
 @pytest.fixture()
-def main_page_function_scope(driver):
+def main_page(driver):
     with allure.step(f"Переход на главную страницу: {Urls.MAIN_PAGE_STELLAR}"):
         driver.get(Urls.MAIN_PAGE_STELLAR)
     return MainPage(driver)
 
 @pytest.fixture()
-def list_order_page_function_scope(driver):
+def list_order_page(driver):
     with allure.step(f"Переход на страницу ленты заказов: {Urls.LIST_ORDERS_STELLAR}"):
         driver.get(Urls.LIST_ORDERS_STELLAR)
     return OrderPage(driver)
 
 @pytest.fixture()
-def login_page_function_scope(driver):
+def login_page(driver):
     with allure.step(f"Переход на страницу авторизации: {Urls.LOGIN}"):
         driver.get(Urls.LOGIN)
     return LoginPage(driver)
