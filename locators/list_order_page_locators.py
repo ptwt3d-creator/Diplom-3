@@ -1,7 +1,7 @@
 from selenium.webdriver.common.by import By
 
 
-class Locators:
+class OrderLocators:
     HEADER_ORDER_LIST = (By.XPATH, "//*[text() = 'Лента заказов']")
     COUNTER_ORDERS_COMLITE_ALL_TIME = (By.XPATH, "//*[text() = 'Выполнено за все время:']/following-sibling::p")
     COUNTER_ORDERS_COMLITE_TO_DAY = (By.XPATH, "//*[text() = 'Выполнено за сегодня:']/following-sibling::p")

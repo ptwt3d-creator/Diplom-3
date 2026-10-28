@@ -3,7 +3,7 @@ from selenium.webdriver.common.by import By
 from selenium.webdriver.support.wait import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 from data import Urls
-from locators.base_page_locators import Locators
+from locators.base_page_locators import BaseLocators
 
 
 class BasePage:
@@ -63,19 +63,19 @@ class BasePage:
 class CommonPage(BasePage):
 
     def wait_click_list_orders_button(self):
-        element = self.wait_for_element_clickable(Locators.LIST_ORDER_BUTTON)
+        element = self.wait_for_element_clickable(BaseLocators.LIST_ORDER_BUTTON)
         element.click()
     
     def wait_click_constructor_button(self):
-        element = self.wait_for_element_clickable(Locators.CONSTRUCTOR)
+        element = self.wait_for_element_clickable(BaseLocators.CONSTRUCTOR)
         element.click()
     
     def wait_header_list_order(self):
-        self.wait_for_element_visible(Locators.LIST_ORDER_BUTTON)
+        self.wait_for_element_visible(BaseLocators.LIST_ORDER_BUTTON)
     
     def wait_invisibility_modal_overlay(self):
-        self.wait_for_element_invisibility(Locators.MODAL_OVERLAY)
+        self.wait_for_element_invisibility(BaseLocators.MODAL_OVERLAY)
 
     # Из-за оверлея работает тольо js
     def js_wait_click_list_order_button(self):
-        self.js_wait_click(Locators.LIST_ORDER_BUTTON)
+        self.js_wait_click(BaseLocators.LIST_ORDER_BUTTON)

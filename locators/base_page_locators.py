@@ -1,7 +1,7 @@
 from selenium.webdriver.common.by import By
 
 
-class Locators:
+class BaseLocators:
     
     CONSTRUCTOR = (By.XPATH, "//*[text() = 'Конструктор']")
     LIST_ORDER_BUTTON = (By.XPATH, "//*[text() = 'Лента Заказов']")

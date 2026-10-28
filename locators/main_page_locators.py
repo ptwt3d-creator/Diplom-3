@@ -1,7 +1,7 @@
 from selenium.webdriver.common.by import By
 
 
-class Locators:
+class MainLocators:
     
     HEADER_COLLECT_BURGER = (By.XPATH, "//*[text() = 'Соберите бургер']")
     INGRIDIENT = (By.XPATH, "(//*[text() = 'Соус Spicy-X'])[1]")
