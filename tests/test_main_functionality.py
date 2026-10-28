@@ -30,7 +30,8 @@ class TestMainFunc:
         main_page_function_scope.drag_and_drop_ingedient_to_choose_area()
         main_page_function_scope.wait_counter_ingredient_1()
 
-        assert main_page_function_scope.get_ingredient_counter_value() == "1"
+        with allure.step("Проверить, что значение счетчика ингредиента стало равно '1'"):
+            assert main_page_function_scope.get_ingredient_counter_value() == "1"
 
     
 

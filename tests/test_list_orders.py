@@ -35,8 +35,9 @@ class TestListOrder:
 
         # Запись в переменную значения счетчика после создания заказа
         counter_all_time_value_increased = list_order_page.get_value_counter_all_time()
-
-        assert int(counter_all_time_value_increased) == int(counter_all_time_value) + 1
+        
+        with allure.step("Проверка, что общий счетчик заказов увеличился на 1"):
+            assert int(counter_all_time_value_increased) == int(counter_all_time_value) + 1
 
     @allure.title("Увеличение счетчика 'Выполнено за сегодня' при создании заказа")
     @allure.description("Проверка, что после оформления заказа под авторизованным пользователем ежедневный счетчик увеличивается на 1")
@@ -66,7 +67,8 @@ class TestListOrder:
         # Запись в переменную значения счетчика после создания заказа
         counter_to_day_value_increased = list_order_page.get_value_counter_to_day()
 
-        assert int(counter_to_day_value_increased) == int(counter_to_day_value) + 1
+        with allure.step("Проверка, что счетчик заказов за день увеличился на 1"):
+            assert int(counter_to_day_value_increased) == int(counter_to_day_value) + 1
     
     @allure.title("Отображение номера созданного заказа в блоке 'В работе'")
     @allure.description("Проверка, что номер только что созданного заказа появляется в списке активных заказов в Ленте")
@@ -94,6 +96,7 @@ class TestListOrder:
 
         # Сохраняем в переменную для последующего сравнения с номером заказа полученым при создании заказа
         num_order_work_list = list_order_page.get_number_oreder_in_list_work()
-
-        assert "0"+str(num_order_window) in str(num_order_work_list)
+        
+        with allure.step("Проверка, что номер созданного заказа появился в списке 'В работе'"):
+            assert "0"+str(num_order_window) in str(num_order_work_list)
 
