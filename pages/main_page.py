@@ -55,7 +55,7 @@ class MainPage(CommonPage):
     def wait_ready_window_order_created(self):
         self.wait_text_not_in_element_list_variants(MainLocators.NUMBER_ORDER_IN_ORDER_CREATED, ["9999", "999", ""])
 
-    def js_click_close_button_oreder_created(self):
+    def js_wait_click_close_button_oreder_created(self):
         self.js_wait_click(MainLocators.BUTTON_CLOSE_WINDOW_ORDER_CREATED)
     
     def get_ingredient_counter_value(self):

@@ -85,7 +85,7 @@ class TestListOrder:
         # Сохраняем номер созданного заказа
         num_order_window = main_page.get_number_oreder_in_window_created_order()
         
-        main_page.js_click_close_button_oreder_created()
+        main_page.js_wait_click_close_button_oreder_created()
         main_page.js_wait_click_list_order_button()
         list_order_page.wait_header_list_order()
 
