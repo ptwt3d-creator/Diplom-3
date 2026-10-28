@@ -69,10 +69,7 @@ class CommonPage(BasePage):
     def wait_click_constructor_button(self):
         element = self.wait_for_element_clickable(BaseLocators.CONSTRUCTOR)
         element.click()
-    
-    def wait_header_list_order(self):
-        self.wait_for_element_visible(BaseLocators.LIST_ORDER_BUTTON)
-    
+        
     def wait_invisibility_modal_overlay(self):
         self.wait_for_element_invisibility(BaseLocators.MODAL_OVERLAY)
 

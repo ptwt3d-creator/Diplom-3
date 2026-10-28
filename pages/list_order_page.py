@@ -14,3 +14,6 @@ class OrderPage(CommonPage):
 
     def wait_number_order_in_work_list(self, number):
         self.wait_text_in_element(OrderLocators.LIST_ORDER_IN_WORK, str(number))
+
+    def wait_header_list_order(self):
+        self.wait_for_element_visible(BaseLocators.HEADER_ORDER_LIST)
