@@ -38,11 +38,7 @@ class MainPage(CommonPage):
     def wait_click_create_order_button(self):
         element = self.wait_for_element_clickable(MainLocators.ORDER_CREATE_BUTTON)
         element.click()
-    
-    def wait_click_close_window_order_created(self):
-        element = self.wait_for_element_visable(MainLocators.BUTTON_CLOSE_WINDOW_ORDER_CREATED)
-        element.click()
-        
+
     def wait_header_collect_burger(self):
         self.wait_for_element_visible(MainLocators.HEADER_COLLECT_BURGER)
     
